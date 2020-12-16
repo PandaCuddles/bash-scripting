@@ -1,0 +1,55 @@
+#!/bin/bash
+
+function print_date {
+	today=$(date +%Y-%m-%d_%H%M%S);
+	echo "$today";
+}
+
+# Function test with no input
+print_date;
+
+function test_input {
+	echo "Input1: $1";
+	echo "Input2: $2";
+}
+
+# Function test with two inputs
+test_input "Orange Juice" "Pasta";
+
+
+
+## $? holds the return value of the previously executed evaluation
+# Inequality test: strings
+s1="abcd";s2="abc";
+[ $s1 > $s2 ];
+# By convention: 0 means success with bash scripting
+echo "Checking if $s1 is greater than $s2: $?";
+
+# Inequality test: anagrams
+a1="ABC";a2="CBA";
+[ $a1 = $a2 ];
+echo "Checking if $a1 is the same as $a2: $?";
+
+# Inequality test: integers
+n1=45;n2=5;
+[ $n1 -eq $n2 ];
+# By convention: 1-255 are used as error codes
+echo "Checking if $n1 is equal to $n2: $?";
+
+# Testing if/else: integers
+val1=10;val2=20;
+if [ $val1 -eq $val2 ]; then
+	echo "$val1 and $val2 are equal";
+else
+	echo "$val1 is not equal to $val2";
+fi
+
+# The reason for the semicolon is to deliniate between statements
+# if/else statements used to be writen like this
+if [ $val1 -eq $val2 ]
+then
+	echo "hi"
+else
+	echo "hello"
+fi
+# Bash uses a newline or a semicolon to deliniate between evaluations and key words
