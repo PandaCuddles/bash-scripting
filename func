@@ -18,7 +18,7 @@ test_input "Orange Juice" "Pasta";
 
 
 
-## $? holds the return value of the previously executed evaluation
+# $? holds the exit status of the last task
 # Inequality test: strings
 s1="abcd";s2="abc";
 [ $s1 > $s2 ];
@@ -38,18 +38,17 @@ echo "Checking if $n1 is equal to $n2: $?";
 
 # Testing if/else: integers
 val1=10;val2=20;
+# The reason for the semicolon is to deliniate between statements
 if [ $val1 -eq $val2 ]; then
 	echo "$val1 and $val2 are equal";
 else
 	echo "$val1 is not equal to $val2";
 fi
 
-# The reason for the semicolon is to deliniate between statements
-# if/else statements used to be writen like this
+# The if/else statement above can also be written like this
 if [ $val1 -eq $val2 ]
 then
-	echo "hi"
+	echo "$val1 and $val2 are equal";
 else
-	echo "hello"
+	echo "$val1 is not equal to $val2";
 fi
-# Bash uses a newline or a semicolon to deliniate between evaluations and key words
